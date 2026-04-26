@@ -143,6 +143,13 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+gnss_env/
+data/
+
+# RINEX / GNSS logs
+*.26o
+*.nmea
+*.rnx
 
 # Spyder project settings
 .spyderproject

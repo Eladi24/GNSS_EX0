@@ -19,7 +19,8 @@ def parse_rinex_file(file_path) -> list:
                     if current_epoch is not None:
                         epochs.append(current_epoch)
                     time_stamp, epoch_flag, num_sats = parse_epoch_header(line)
-                    if epoch_flag != 0:
+                    # RINEX epoch flag 0 is OK, 1 is power failure (contains valid data).
+                    if epoch_flag > 1:
                         current_epoch = None
                         continue
                     current_epoch = {
@@ -43,7 +44,9 @@ def parse_sat_line(line, obs_types) -> dict:
     constellation_letter = sattelite_id[0]
     obs_list = obs_types.get(constellation_letter, [])
     prn = int(sattelite_id[1:])
-    if obs_list is None:
+    
+    # obs_list is [] if the constellation is unsupported, not None.
+    if not obs_list:
         return None
     sattelite_data = {
         "id": sattelite_id,
@@ -51,12 +54,26 @@ def parse_sat_line(line, obs_types) -> dict:
         "prn": prn
     }
 
+    has_relevant_data = False
     for n, obs_name in enumerate(obs_list):
-        start = 3 + (n * 16)
+        # RINEX 3 data fields are 14 chars wide, starting at index 4 for the first obs
+        # (A3, 1X, F14.3, I1, I1). Previous offset of 3 caused an off-by-one error
+        # which accidentally included the previous observation's SSI flag.
+        start = 4 + (n * 16)
         end = start + 14
 
         raw = line[start:end] if end <= len(line) else ""
-        sattelite_data[obs_name] = float(raw.strip()) if raw.strip() else None
+        try:
+            val = float(raw.split()[0]) if raw.strip() else None
+        except ValueError:
+            val = None
+        sattelite_data[obs_name] = val
+        if val is not None:
+            has_relevant_data = True
+            
+    if not has_relevant_data:
+        return None
+        
     return sattelite_data
 
 

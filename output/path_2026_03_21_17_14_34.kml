@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1">
+        <Style id="4">
+            <LineStyle id="5">
+                <color>ffffff00</color>
+                <colorMode>normal</colorMode>
+                <width>3</width>
+            </LineStyle>
+        </Style>
+        <Placemark id="3">
+            <name>GNSS Track</name>
+            <styleUrl>#4</styleUrl>
+            <LineString id="2">
+                <altitudeMode>absolute</altitudeMode>
+                <coordinates>34.81329628419316,32.168546318314874,49.94300195761025 34.813387833056716,32.16856638164931,49.97374404780567 34.81322618792961,32.16838481411344,52.09314971510321 34.813422736415355,32.16851502787428,52.35512608382851 34.81348727696958,32.16860467406303,52.354497098363936 34.81326990236736,32.168641357754794,51.627281500026584 34.81331736842754,32.168536000405275,51.75516637135297 34.813254457552446,32.168550745403586,50.98252716939896 34.813276284443425,32.1685367292107,50.130584474653006 34.813268114608874,32.16859686414441,49.30037455353886 34.81322868598845,32.168529122120226,49.12731790356338 34.813261761681424,32.16858105891273,48.76817037910223 34.8132779888348,32.168548696128184,48.515582588501275 34.81329051619999,32.16854298968036,48.221773830242455 34.81333168764937,32.16866816386786,47.345834446139634 34.81332729789454,32.16856413881884,47.292490045540035 34.81329360013133,32.168569361867554,46.81951079610735 34.81323040427679,32.168584684117356,47.296339405700564 34.8132619608968,32.168615343370064,48.27028781827539 34.81334246630585,32.16855200929004,48.19843929912895 34.81324829193559,32.168608110597184,47.77354533225298 34.81324265127631,32.16870088676855,47.643924064934254 34.81329135118254,32.16864967634299,47.086200116202235 34.81327573985777,32.168673028636434,47.96700509637594 34.813280356883695,32.16870409319563,46.54510300513357 34.813324031943324,32.16871405172698,46.671548780053854 34.813338329349044,32.16874128468896,44.69696719292551 34.813316919056625,32.16870783592633,45.16558235138655 34.813284160973055,32.168800380540645,43.45550226327032 34.813313859475315,32.168783001619886,41.25538591854274 34.81331643609405,32.168777562469536,39.06169002316892 34.813290511108924,32.16883762649672,39.228949781507254 34.81327256150652,32.16875381134328,37.85899790562689 34.81328694774549,32.16876181133878,38.014134749770164 34.81330050239598,32.16878572022834,38.895973714999855 34.81322270541146,32.16877331299034,38.194054146297276 34.813220568340036,32.16876650784263,38.61425060592592 34.813204729931954,32.1687600717756,40.389411819167435 34.81317965930632,32.16875990885414,40.02412236575037 34.81318343688569,32.16871725311069,38.22027925774455 34.81321857565149,32.168809779664585,36.72162048704922 34.81323087530352,32.16882155738868,36.282741010189056 34.81314062932683,32.16878346199238,37.64491770602763 34.81316371803478,32.1688044591389,37.75881452392787 34.813137958942725,32.1687780663735,38.16370365768671 34.81311629288125,32.16880754144864,39.00347144622356 34.813045663764235,32.16874800178103,39.0014220001176 34.813106458092776,32.1687823330518,37.92745771538466 34.81308293373951,32.16879032062643,37.86506314203143 34.81308377614906,32.16878189924185,38.245288900099695 34.81297421959619,32.16872464380422,39.30001463647932 34.8129862276747,32.168768055758136,40.213278400711715 34.81299883536298,32.16877105671974,41.58694970421493 34.81295423506488,32.168789642139004,42.28253804240376 34.81293750131084,32.168741045544884,43.43206652533263 34.81294772875519,32.16880067123914,43.047065992839634 34.81293580796286,32.168770230878756,42.52113226708025 34.812874060927264,32.168760477865575,42.70298016630113 34.81286399877328,32.16875123577818,42.73955266177654 34.81283686318733,32.16878215501523,43.227799833752215 34.812817037733254,32.16886051125384,43.27223925758153 34.81277229717553,32.16877846454027,43.97485761065036 34.81279899899269,32.16880903651091,43.01324747689068 34.812757132795745,32.168785881683824,43.75279350485653 34.812786393578676,32.16878786135287,43.88524625636637 34.81281938864433,32.168829776172224,44.98448551632464 34.81280260166163,32.16886771340964,44.2715878020972 34.812861609908495,32.16876896732518,43.204491592012346 34.81284562532961,32.16882129386812,41.630882654339075 34.81288517876183,32.16880705702228,41.12744655739516 34.81291532445266,32.1688141988914,40.85280759911984 34.81291302676867,32.16882487830136,42.370557736605406 34.81293937895147,32.168812590578995,42.65318380855024 34.812986827790844,32.168805293241434,41.39448944572359 34.812963499954755,32.16883303308086,41.205284256488085 34.81296493733979,32.16881081711888,40.84953158721328 34.81303492278618,32.1688158375743,41.13586730789393 34.81301406739015,32.16879217068288,40.80949094053358 34.81307264226295,32.168815109213746,40.600501818582416 34.81307273798697,32.16880000356093,41.469240366481245 34.81306393556197,32.16880904925744,41.320882513187826 34.81310550490275,32.16883184491356,40.855991158634424 34.81320102377721,32.168821297684936,43.56084059923887 34.813164876335826,32.16876464054763,44.374907807447016 34.81316969784547,32.16883470871533,43.725086906924844 34.813181270117916,32.16882250361127,44.88766617979854 34.81322010339699,32.168799154123604,47.135193325579166 34.81320710461765,32.168806262777245,47.06027989834547 34.813210099751615,32.1688262928455,46.83845686353743 34.81324010994831,32.168809142788234,45.46858551260084 34.81331076737848,32.16884623163819,45.87134405784309 34.81330029718583,32.16878810607627,44.38177571538836 34.813257591455965,32.168819049157804,43.37440737336874 34.813276856548384,32.16881153019478,43.58510414138436 34.813304173456736,32.168830449640424,42.15549925994128 34.81328961002612,32.16883407674314,42.28924649767578 34.81326045572234,32.16882463274608,42.63498991448432 34.8132640675774,32.168815976172574,41.65452577266842 34.81331518295715,32.168800572961054,42.75646762549877 34.81323950739498,32.16883986342834,41.69898249860853 34.81325657222552,32.168812632206986,41.42945784609765 34.813268748558194,32.16879817171492,40.50920228753239 34.81333120794083,32.16879385024745,43.65259504225105 34.81328738009487,32.16883672721883,42.90165004692972 34.81328727105772,32.1688056252885,42.89929710049182 34.81330923552008,32.16886344137579,42.19864683505148 34.813281137803315,32.16879109699429,42.49141551461071 34.81326159861009,32.16881279076091,41.68554081115872 34.81325373999911,32.168772712545085,41.84197178669274 34.81323998560838,32.16880778887913,42.583772871643305 34.81319169489438,32.1687645521578,42.52873945329338 34.81328069720588,32.16879372597946,42.943716363981366 34.81328225014496,32.16879833545489,43.70468405261636 34.813274538287544,32.16883762981696,42.49797454755753 34.81329041871425,32.168784320304844,42.94660979323089 34.813290467794694,32.1688282546151,42.11892139632255 34.8132755998539,32.16882381495597,42.22803769260645 34.813294157304426,32.16881370428957,44.46248527429998 34.8132714009798,32.168847406680726,43.932054343633354 34.81325092560508,32.168802855559804,43.81826604343951</coordinates>
+            </LineString>
+        </Placemark>
+        <Folder id="6">
+            <name>Epochs</name>
+            <Placemark id="8">
+                <name>15:14:52</name>
+                <description>Alt: 49.9 m
+Speed: 2.2 m/s
+Sats: 7</description>
+                <Point id="7">
+                    <coordinates>34.81329628419316,32.168546318314874,49.94300195761025</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="10">
+                <name>15:14:53</name>
+                <description>Alt: 50.0 m
+Speed: 0.5 m/s
+Sats: 7</description>
+                <Point id="9">
+                    <coordinates>34.813387833056716,32.16856638164931,49.97374404780567</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="12">
+                <name>15:14:54</name>
+                <description>Alt: 52.1 m
+Speed: 3.9 m/s
+Sats: 8</description>
+                <Point id="11">
+                    <coordinates>34.81322618792961,32.16838481411344,52.09314971510321</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="14">
+                <name>15:14:55</name>
+                <description>Alt: 52.4 m
+Speed: 0.3 m/s
+Sats: 6</description>
+                <Point id="13">
+                    <coordinates>34.813422736415355,32.16851502787428,52.35512608382851</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="16">
+                <name>15:14:56</name>
+                <description>Alt: 52.4 m
+Speed: 0.7 m/s
+Sats: 7</description>
+                <Point id="15">
+                    <coordinates>34.81348727696958,32.16860467406303,52.354497098363936</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="18">
+                <name>15:14:57</name>
+                <description>Alt: 51.6 m
+Speed: 0.7 m/s
+Sats: 7</description>
+                <Point id="17">
+                    <coordinates>34.81326990236736,32.168641357754794,51.627281500026584</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="20">
+                <name>15:14:58</name>
+                <description>Alt: 51.8 m
+Speed: 0.9 m/s
+Sats: 9</description>
+                <Point id="19">
+                    <coordinates>34.81331736842754,32.168536000405275,51.75516637135297</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="22">
+                <name>15:14:59</name>
+                <description>Alt: 51.0 m
+Speed: 4.6 m/s
+Sats: 10</description>
+                <Point id="21">
+                    <coordinates>34.813254457552446,32.168550745403586,50.98252716939896</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="24">
+                <name>15:15:00</name>
+                <description>Alt: 50.1 m
+Speed: 0.3 m/s
+Sats: 11</description>
+                <Point id="23">
+                    <coordinates>34.813276284443425,32.1685367292107,50.130584474653006</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="26">
+                <name>15:15:01</name>
+                <description>Alt: 49.3 m
+Speed: 0.9 m/s
+Sats: 11</description>
+                <Point id="25">
+                    <coordinates>34.813268114608874,32.16859686414441,49.30037455353886</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="28">
+                <name>15:15:02</name>
+                <description>Alt: 49.1 m
+Speed: 2.3 m/s
+Sats: 11</description>
+                <Point id="27">
+                    <coordinates>34.81322868598845,32.168529122120226,49.12731790356338</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="30">
+                <name>15:15:03</name>
+                <description>Alt: 48.8 m
+Speed: 1.7 m/s
+Sats: 10</description>
+                <Point id="29">
+                    <coordinates>34.813261761681424,32.16858105891273,48.76817037910223</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="32">
+                <name>15:15:04</name>
+                <description>Alt: 48.5 m
+Speed: 3.3 m/s
+Sats: 11</description>
+                <Point id="31">
+                    <coordinates>34.8132779888348,32.168548696128184,48.515582588501275</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="34">
+                <name>15:15:05</name>
+                <description>Alt: 48.2 m
+Speed: 1.6 m/s
+Sats: 10</description>
+                <Point id="33">
+                    <coordinates>34.81329051619999,32.16854298968036,48.221773830242455</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="36">
+                <name>15:15:06</name>
+                <description>Alt: 47.3 m
+Speed: 1.2 m/s
+Sats: 10</description>
+                <Point id="35">
+                    <coordinates>34.81333168764937,32.16866816386786,47.345834446139634</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="38">
+                <name>15:15:07</name>
+                <description>Alt: 47.3 m
+Speed: 0.8 m/s
+Sats: 9</description>
+                <Point id="37">
+                    <coordinates>34.81332729789454,32.16856413881884,47.292490045540035</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="40">
+                <name>15:15:08</name>
+                <description>Alt: 46.8 m
+Speed: 1.0 m/s
+Sats: 8</description>
+                <Point id="39">
+                    <coordinates>34.81329360013133,32.168569361867554,46.81951079610735</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="42">
+                <name>15:15:09</name>
+                <description>Alt: 47.3 m
+Speed: 1.7 m/s
+Sats: 9</description>
+                <Point id="41">
+                    <coordinates>34.81323040427679,32.168584684117356,47.296339405700564</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="44">
+                <name>15:15:10</name>
+                <description>Alt: 48.3 m
+Speed: 1.7 m/s
+Sats: 10</description>
+                <Point id="43">
+                    <coordinates>34.8132619608968,32.168615343370064,48.27028781827539</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="46">
+                <name>15:15:11</name>
+                <description>Alt: 48.2 m
+Speed: 1.2 m/s
+Sats: 10</description>
+                <Point id="45">
+                    <coordinates>34.81334246630585,32.16855200929004,48.19843929912895</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="48">
+                <name>15:15:12</name>
+                <description>Alt: 47.8 m
+Speed: 1.2 m/s
+Sats: 10</description>
+                <Point id="47">
+                    <coordinates>34.81324829193559,32.168608110597184,47.77354533225298</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="50">
+                <name>15:15:13</name>
+                <description>Alt: 47.6 m
+Speed: 1.5 m/s
+Sats: 12</description>
+                <Point id="49">
+                    <coordinates>34.81324265127631,32.16870088676855,47.643924064934254</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="52">
+                <name>15:15:14</name>
+                <description>Alt: 47.1 m
+Speed: 1.6 m/s
+Sats: 13</description>
+                <Point id="51">
+                    <coordinates>34.81329135118254,32.16864967634299,47.086200116202235</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="54">
+                <name>15:15:15</name>
+                <description>Alt: 48.0 m
+Speed: 1.8 m/s
+Sats: 14</description>
+                <Point id="53">
+                    <coordinates>34.81327573985777,32.168673028636434,47.96700509637594</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="56">
+                <name>15:15:16</name>
+                <description>Alt: 46.5 m
+Speed: 1.3 m/s
+Sats: 14</description>
+                <Point id="55">
+                    <coordinates>34.813280356883695,32.16870409319563,46.54510300513357</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="58">
+                <name>15:15:17</name>
+                <description>Alt: 46.7 m
+Speed: 1.0 m/s
+Sats: 14</description>
+                <Point id="57">
+                    <coordinates>34.813324031943324,32.16871405172698,46.671548780053854</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="60">
+                <name>15:15:18</name>
+                <description>Alt: 44.7 m
+Speed: 1.1 m/s
+Sats: 14</description>
+                <Point id="59">
+                    <coordinates>34.813338329349044,32.16874128468896,44.69696719292551</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="62">
+                <name>15:15:19</name>
+                <description>Alt: 45.2 m
+Speed: 0.8 m/s
+Sats: 14</description>
+                <Point id="61">
+                    <coordinates>34.813316919056625,32.16870783592633,45.16558235138655</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="64">
+                <name>15:15:20</name>
+                <description>Alt: 43.5 m
+Speed: 1.3 m/s
+Sats: 14</description>
+                <Point id="63">
+                    <coordinates>34.813284160973055,32.168800380540645,43.45550226327032</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="66">
+                <name>15:15:21</name>
+                <description>Alt: 41.3 m
+Speed: 0.8 m/s
+Sats: 14</description>
+                <Point id="65">
+                    <coordinates>34.813313859475315,32.168783001619886,41.25538591854274</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="68">
+                <name>15:15:22</name>
+                <description>Alt: 39.1 m
+Speed: 0.9 m/s
+Sats: 14</description>
+                <Point id="67">
+                    <coordinates>34.81331643609405,32.168777562469536,39.06169002316892</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="70">
+                <name>15:15:23</name>
+                <description>Alt: 39.2 m
+Speed: 0.7 m/s
+Sats: 14</description>
+                <Point id="69">
+                    <coordinates>34.813290511108924,32.16883762649672,39.228949781507254</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="72">
+                <name>15:15:24</name>
+                <description>Alt: 37.9 m
+Speed: 1.0 m/s
+Sats: 14</description>
+                <Point id="71">
+                    <coordinates>34.81327256150652,32.16875381134328,37.85899790562689</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="74">
+                <name>15:15:25</name>
+                <description>Alt: 38.0 m
+Speed: 1.1 m/s
+Sats: 14</description>
+                <Point id="73">
+                    <coordinates>34.81328694774549,32.16876181133878,38.014134749770164</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="76">
+                <name>15:15:26</name>
+                <description>Alt: 38.9 m
+Speed: 1.4 m/s
+Sats: 14</description>
+                <Point id="75">
+                    <coordinates>34.81330050239598,32.16878572022834,38.895973714999855</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="78">
+                <name>15:15:27</name>
+                <description>Alt: 38.2 m
+Speed: 1.0 m/s
+Sats: 14</description>
+                <Point id="77">
+                    <coordinates>34.81322270541146,32.16877331299034,38.194054146297276</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="80">
+                <name>15:15:28</name>
+                <description>Alt: 38.6 m
+Speed: 1.2 m/s
+Sats: 12</description>
+                <Point id="79">
+                    <coordinates>34.813220568340036,32.16876650784263,38.61425060592592</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="82">
+                <name>15:15:29</name>
+                <description>Alt: 40.4 m
+Speed: 1.2 m/s
+Sats: 13</description>
+                <Point id="81">
+                    <coordinates>34.813204729931954,32.1687600717756,40.389411819167435</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="84">
+                <name>15:15:30</name>
+                <description>Alt: 40.0 m
+Speed: 1.5 m/s
+Sats: 13</description>
+                <Point id="83">
+                    <coordinates>34.81317965930632,32.16875990885414,40.02412236575037</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="86">
+                <name>15:15:31</name>
+                <description>Alt: 38.2 m
+Speed: 1.3 m/s
+Sats: 14</description>
+                <Point id="85">
+                    <coordinates>34.81318343688569,32.16871725311069,38.22027925774455</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="88">
+                <name>15:15:32</name>
+                <description>Alt: 36.7 m
+Speed: 1.5 m/s
+Sats: 13</description>
+                <Point id="87">
+                    <coordinates>34.81321857565149,32.168809779664585,36.72162048704922</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="90">
+                <name>15:15:33</name>
+                <description>Alt: 36.3 m
+Speed: 1.7 m/s
+Sats: 13</description>
+                <Point id="89">
+                    <coordinates>34.81323087530352,32.16882155738868,36.282741010189056</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="92">
+                <name>15:15:34</name>
+                <description>Alt: 37.6 m
+Speed: 1.6 m/s
+Sats: 14</description>
+                <Point id="91">
+                    <coordinates>34.81314062932683,32.16878346199238,37.64491770602763</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="94">
+                <name>15:15:35</name>
+                <description>Alt: 37.8 m
+Speed: 1.2 m/s
+Sats: 13</description>
+                <Point id="93">
+                    <coordinates>34.81316371803478,32.1688044591389,37.75881452392787</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="96">
+                <name>15:15:36</name>
+                <description>Alt: 38.2 m
+Speed: 0.9 m/s
+Sats: 14</description>
+                <Point id="95">
+                    <coordinates>34.813137958942725,32.1687780663735,38.16370365768671</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="98">
+                <name>15:15:37</name>
+                <description>Alt: 39.0 m
+Speed: 1.0 m/s
+Sats: 13</description>
+                <Point id="97">
+                    <coordinates>34.81311629288125,32.16880754144864,39.00347144622356</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="100">
+                <name>15:15:38</name>
+                <description>Alt: 39.0 m
+Speed: 0.9 m/s
+Sats: 12</description>
+                <Point id="99">
+                    <coordinates>34.813045663764235,32.16874800178103,39.0014220001176</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="102">
+                <name>15:15:39</name>
+                <description>Alt: 37.9 m
+Speed: 0.8 m/s
+Sats: 13</description>
+                <Point id="101">
+                    <coordinates>34.813106458092776,32.1687823330518,37.92745771538466</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="104">
+                <name>15:15:40</name>
+                <description>Alt: 37.9 m
+Speed: 1.0 m/s
+Sats: 12</description>
+                <Point id="103">
+                    <coordinates>34.81308293373951,32.16879032062643,37.86506314203143</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="106">
+                <name>15:15:41</name>
+                <description>Alt: 38.2 m
+Speed: 1.6 m/s
+Sats: 11</description>
+                <Point id="105">
+                    <coordinates>34.81308377614906,32.16878189924185,38.245288900099695</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="108">
+                <name>15:15:42</name>
+                <description>Alt: 39.3 m
+Speed: 2.1 m/s
+Sats: 12</description>
+                <Point id="107">
+                    <coordinates>34.81297421959619,32.16872464380422,39.30001463647932</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="110">
+                <name>15:15:43</name>
+                <description>Alt: 40.2 m
+Speed: 1.9 m/s
+Sats: 14</description>
+                <Point id="109">
+                    <coordinates>34.8129862276747,32.168768055758136,40.213278400711715</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="112">
+                <name>15:15:44</name>
+                <description>Alt: 41.6 m
+Speed: 1.5 m/s
+Sats: 14</description>
+                <Point id="111">
+                    <coordinates>34.81299883536298,32.16877105671974,41.58694970421493</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="114">
+                <name>15:15:45</name>
+                <description>Alt: 42.3 m
+Speed: 1.7 m/s
+Sats: 14</description>
+                <Point id="113">
+                    <coordinates>34.81295423506488,32.168789642139004,42.28253804240376</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="116">
+                <name>15:15:46</name>
+                <description>Alt: 43.4 m
+Speed: 1.7 m/s
+Sats: 14</description>
+                <Point id="115">
+                    <coordinates>34.81293750131084,32.168741045544884,43.43206652533263</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="118">
+                <name>15:15:47</name>
+                <description>Alt: 43.0 m
+Speed: 2.0 m/s
+Sats: 14</description>
+                <Point id="117">
+                    <coordinates>34.81294772875519,32.16880067123914,43.047065992839634</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="120">
+                <name>15:15:48</name>
+                <description>Alt: 42.5 m
+Speed: 2.0 m/s
+Sats: 14</description>
+                <Point id="119">
+                    <coordinates>34.81293580796286,32.168770230878756,42.52113226708025</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="122">
+                <name>15:15:49</name>
+                <description>Alt: 42.7 m
+Speed: 1.8 m/s
+Sats: 14</description>
+                <Point id="121">
+                    <coordinates>34.812874060927264,32.168760477865575,42.70298016630113</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="124">
+                <name>15:15:50</name>
+                <description>Alt: 42.7 m
+Speed: 2.1 m/s
+Sats: 14</description>
+                <Point id="123">
+                    <coordinates>34.81286399877328,32.16875123577818,42.73955266177654</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="126">
+                <name>15:15:51</name>
+                <description>Alt: 43.2 m
+Speed: 1.9 m/s
+Sats: 14</description>
+                <Point id="125">
+                    <coordinates>34.81283686318733,32.16878215501523,43.227799833752215</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="128">
+                <name>15:15:52</name>
+                <description>Alt: 43.3 m
+Speed: 1.6 m/s
+Sats: 14</description>
+                <Point id="127">
+                    <coordinates>34.812817037733254,32.16886051125384,43.27223925758153</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="130">
+                <name>15:15:53</name>
+                <description>Alt: 44.0 m
+Speed: 2.0 m/s
+Sats: 14</description>
+                <Point id="129">
+                    <coordinates>34.81277229717553,32.16877846454027,43.97485761065036</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="132">
+                <name>15:15:54</name>
+                <description>Alt: 43.0 m
+Speed: 2.0 m/s
+Sats: 14</description>
+                <Point id="131">
+                    <coordinates>34.81279899899269,32.16880903651091,43.01324747689068</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="134">
+                <name>15:15:55</name>
+                <description>Alt: 43.8 m
+Speed: 1.4 m/s
+Sats: 14</description>
+                <Point id="133">
+                    <coordinates>34.812757132795745,32.168785881683824,43.75279350485653</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="136">
+                <name>15:15:56</name>
+                <description>Alt: 43.9 m
+Speed: 0.6 m/s
+Sats: 14</description>
+                <Point id="135">
+                    <coordinates>34.812786393578676,32.16878786135287,43.88524625636637</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="138">
+                <name>15:15:57</name>
+                <description>Alt: 45.0 m
+Speed: 1.0 m/s
+Sats: 14</description>
+                <Point id="137">
+                    <coordinates>34.81281938864433,32.168829776172224,44.98448551632464</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="140">
+                <name>15:15:58</name>
+                <description>Alt: 44.3 m
+Speed: 1.5 m/s
+Sats: 14</description>
+                <Point id="139">
+                    <coordinates>34.81280260166163,32.16886771340964,44.2715878020972</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="142">
+                <name>15:15:59</name>
+                <description>Alt: 43.2 m
+Speed: 1.8 m/s
+Sats: 14</description>
+                <Point id="141">
+                    <coordinates>34.812861609908495,32.16876896732518,43.204491592012346</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="144">
+                <name>15:16:00</name>
+                <description>Alt: 41.6 m
+Speed: 1.9 m/s
+Sats: 14</description>
+                <Point id="143">
+                    <coordinates>34.81284562532961,32.16882129386812,41.630882654339075</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="146">
+                <name>15:16:01</name>
+                <description>Alt: 41.1 m
+Speed: 2.0 m/s
+Sats: 13</description>
+                <Point id="145">
+                    <coordinates>34.81288517876183,32.16880705702228,41.12744655739516</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="148">
+                <name>15:16:02</name>
+                <description>Alt: 40.9 m
+Speed: 1.8 m/s
+Sats: 13</description>
+                <Point id="147">
+                    <coordinates>34.81291532445266,32.1688141988914,40.85280759911984</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="150">
+                <name>15:16:03</name>
+                <description>Alt: 42.4 m
+Speed: 1.8 m/s
+Sats: 14</description>
+                <Point id="149">
+                    <coordinates>34.81291302676867,32.16882487830136,42.370557736605406</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="152">
+                <name>15:16:04</name>
+                <description>Alt: 42.7 m
+Speed: 2.1 m/s
+Sats: 14</description>
+                <Point id="151">
+                    <coordinates>34.81293937895147,32.168812590578995,42.65318380855024</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="154">
+                <name>15:16:05</name>
+                <description>Alt: 41.4 m
+Speed: 1.9 m/s
+Sats: 14</description>
+                <Point id="153">
+                    <coordinates>34.812986827790844,32.168805293241434,41.39448944572359</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="156">
+                <name>15:16:06</name>
+                <description>Alt: 41.2 m
+Speed: 1.7 m/s
+Sats: 14</description>
+                <Point id="155">
+                    <coordinates>34.812963499954755,32.16883303308086,41.205284256488085</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="158">
+                <name>15:16:07</name>
+                <description>Alt: 40.8 m
+Speed: 1.9 m/s
+Sats: 13</description>
+                <Point id="157">
+                    <coordinates>34.81296493733979,32.16881081711888,40.84953158721328</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="160">
+                <name>15:16:08</name>
+                <description>Alt: 41.1 m
+Speed: 1.8 m/s
+Sats: 14</description>
+                <Point id="159">
+                    <coordinates>34.81303492278618,32.1688158375743,41.13586730789393</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="162">
+                <name>15:16:09</name>
+                <description>Alt: 40.8 m
+Speed: 2.0 m/s
+Sats: 14</description>
+                <Point id="161">
+                    <coordinates>34.81301406739015,32.16879217068288,40.80949094053358</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="164">
+                <name>15:16:10</name>
+                <description>Alt: 40.6 m
+Speed: 2.8 m/s
+Sats: 11</description>
+                <Point id="163">
+                    <coordinates>34.81307264226295,32.168815109213746,40.600501818582416</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="166">
+                <name>15:16:11</name>
+                <description>Alt: 41.5 m
+Speed: 1.4 m/s
+Sats: 14</description>
+                <Point id="165">
+                    <coordinates>34.81307273798697,32.16880000356093,41.469240366481245</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="168">
+                <name>15:16:12</name>
+                <description>Alt: 41.3 m
+Speed: 1.3 m/s
+Sats: 14</description>
+                <Point id="167">
+                    <coordinates>34.81306393556197,32.16880904925744,41.320882513187826</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="170">
+                <name>15:16:13</name>
+                <description>Alt: 40.9 m
+Speed: 1.1 m/s
+Sats: 14</description>
+                <Point id="169">
+                    <coordinates>34.81310550490275,32.16883184491356,40.855991158634424</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="172">
+                <name>15:16:14</name>
+                <description>Alt: 43.6 m
+Speed: 2.4 m/s
+Sats: 14</description>
+                <Point id="171">
+                    <coordinates>34.81320102377721,32.168821297684936,43.56084059923887</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="174">
+                <name>15:16:15</name>
+                <description>Alt: 44.4 m
+Speed: 1.7 m/s
+Sats: 13</description>
+                <Point id="173">
+                    <coordinates>34.813164876335826,32.16876464054763,44.374907807447016</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="176">
+                <name>15:16:16</name>
+                <description>Alt: 43.7 m
+Speed: 1.4 m/s
+Sats: 14</description>
+                <Point id="175">
+                    <coordinates>34.81316969784547,32.16883470871533,43.725086906924844</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="178">
+                <name>15:16:17</name>
+                <description>Alt: 44.9 m
+Speed: 1.5 m/s
+Sats: 13</description>
+                <Point id="177">
+                    <coordinates>34.813181270117916,32.16882250361127,44.88766617979854</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="180">
+                <name>15:16:18</name>
+                <description>Alt: 47.1 m
+Speed: 1.9 m/s
+Sats: 14</description>
+                <Point id="179">
+                    <coordinates>34.81322010339699,32.168799154123604,47.135193325579166</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="182">
+                <name>15:16:19</name>
+                <description>Alt: 47.1 m
+Speed: 1.6 m/s
+Sats: 12</description>
+                <Point id="181">
+                    <coordinates>34.81320710461765,32.168806262777245,47.06027989834547</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="184">
+                <name>15:16:20</name>
+                <description>Alt: 46.8 m
+Speed: 1.7 m/s
+Sats: 14</description>
+                <Point id="183">
+                    <coordinates>34.813210099751615,32.1688262928455,46.83845686353743</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="186">
+                <name>15:16:21</name>
+                <description>Alt: 45.5 m
+Speed: 1.6 m/s
+Sats: 14</description>
+                <Point id="185">
+                    <coordinates>34.81324010994831,32.168809142788234,45.46858551260084</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="188">
+                <name>15:16:22</name>
+                <description>Alt: 45.9 m
+Speed: 2.1 m/s
+Sats: 13</description>
+                <Point id="187">
+                    <coordinates>34.81331076737848,32.16884623163819,45.87134405784309</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="190">
+                <name>15:16:23</name>
+                <description>Alt: 44.4 m
+Speed: 1.2 m/s
+Sats: 13</description>
+                <Point id="189">
+                    <coordinates>34.81330029718583,32.16878810607627,44.38177571538836</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="192">
+                <name>15:16:24</name>
+                <description>Alt: 43.4 m
+Speed: 1.3 m/s
+Sats: 13</description>
+                <Point id="191">
+                    <coordinates>34.813257591455965,32.168819049157804,43.37440737336874</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="194">
+                <name>15:16:25</name>
+                <description>Alt: 43.6 m
+Speed: 1.2 m/s
+Sats: 14</description>
+                <Point id="193">
+                    <coordinates>34.813276856548384,32.16881153019478,43.58510414138436</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="196">
+                <name>15:16:26</name>
+                <description>Alt: 42.2 m
+Speed: 1.6 m/s
+Sats: 14</description>
+                <Point id="195">
+                    <coordinates>34.813304173456736,32.168830449640424,42.15549925994128</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="198">
+                <name>15:16:27</name>
+                <description>Alt: 42.3 m
+Speed: 0.7 m/s
+Sats: 13</description>
+                <Point id="197">
+                    <coordinates>34.81328961002612,32.16883407674314,42.28924649767578</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="200">
+                <name>15:16:28</name>
+                <description>Alt: 42.6 m
+Speed: 0.9 m/s
+Sats: 13</description>
+                <Point id="199">
+                    <coordinates>34.81326045572234,32.16882463274608,42.63498991448432</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="202">
+                <name>15:16:29</name>
+                <description>Alt: 41.7 m
+Speed: 1.0 m/s
+Sats: 13</description>
+                <Point id="201">
+                    <coordinates>34.8132640675774,32.168815976172574,41.65452577266842</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="204">
+                <name>15:16:30</name>
+                <description>Alt: 42.8 m
+Speed: 1.2 m/s
+Sats: 13</description>
+                <Point id="203">
+                    <coordinates>34.81331518295715,32.168800572961054,42.75646762549877</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="206">
+                <name>15:16:31</name>
+                <description>Alt: 41.7 m
+Speed: 1.5 m/s
+Sats: 13</description>
+                <Point id="205">
+                    <coordinates>34.81323950739498,32.16883986342834,41.69898249860853</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="208">
+                <name>15:16:32</name>
+                <description>Alt: 41.4 m
+Speed: 1.0 m/s
+Sats: 13</description>
+                <Point id="207">
+                    <coordinates>34.81325657222552,32.168812632206986,41.42945784609765</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="210">
+                <name>15:16:33</name>
+                <description>Alt: 40.5 m
+Speed: 1.2 m/s
+Sats: 14</description>
+                <Point id="209">
+                    <coordinates>34.813268748558194,32.16879817171492,40.50920228753239</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="212">
+                <name>15:16:34</name>
+                <description>Alt: 43.7 m
+Speed: 1.4 m/s
+Sats: 13</description>
+                <Point id="211">
+                    <coordinates>34.81333120794083,32.16879385024745,43.65259504225105</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="214">
+                <name>15:16:35</name>
+                <description>Alt: 42.9 m
+Speed: 1.5 m/s
+Sats: 13</description>
+                <Point id="213">
+                    <coordinates>34.81328738009487,32.16883672721883,42.90165004692972</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="216">
+                <name>15:16:36</name>
+                <description>Alt: 42.9 m
+Speed: 1.1 m/s
+Sats: 14</description>
+                <Point id="215">
+                    <coordinates>34.81328727105772,32.1688056252885,42.89929710049182</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="218">
+                <name>15:16:37</name>
+                <description>Alt: 42.2 m
+Speed: 0.9 m/s
+Sats: 13</description>
+                <Point id="217">
+                    <coordinates>34.81330923552008,32.16886344137579,42.19864683505148</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="220">
+                <name>15:16:38</name>
+                <description>Alt: 42.5 m
+Speed: 0.5 m/s
+Sats: 13</description>
+                <Point id="219">
+                    <coordinates>34.813281137803315,32.16879109699429,42.49141551461071</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="222">
+                <name>15:16:39</name>
+                <description>Alt: 41.7 m
+Speed: 0.9 m/s
+Sats: 13</description>
+                <Point id="221">
+                    <coordinates>34.81326159861009,32.16881279076091,41.68554081115872</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="224">
+                <name>15:16:40</name>
+                <description>Alt: 41.8 m
+Speed: 1.0 m/s
+Sats: 12</description>
+                <Point id="223">
+                    <coordinates>34.81325373999911,32.168772712545085,41.84197178669274</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="226">
+                <name>15:16:41</name>
+                <description>Alt: 42.6 m
+Speed: 1.4 m/s
+Sats: 12</description>
+                <Point id="225">
+                    <coordinates>34.81323998560838,32.16880778887913,42.583772871643305</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="228">
+                <name>15:16:42</name>
+                <description>Alt: 42.5 m
+Speed: 1.0 m/s
+Sats: 14</description>
+                <Point id="227">
+                    <coordinates>34.81319169489438,32.1687645521578,42.52873945329338</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="230">
+                <name>15:16:43</name>
+                <description>Alt: 42.9 m
+Speed: 0.9 m/s
+Sats: 14</description>
+                <Point id="229">
+                    <coordinates>34.81328069720588,32.16879372597946,42.943716363981366</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="232">
+                <name>15:16:44</name>
+                <description>Alt: 43.7 m
+Speed: 1.4 m/s
+Sats: 13</description>
+                <Point id="231">
+                    <coordinates>34.81328225014496,32.16879833545489,43.70468405261636</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="234">
+                <name>15:16:45</name>
+                <description>Alt: 42.5 m
+Speed: 1.2 m/s
+Sats: 13</description>
+                <Point id="233">
+                    <coordinates>34.813274538287544,32.16883762981696,42.49797454755753</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="236">
+                <name>15:16:46</name>
+                <description>Alt: 42.9 m
+Speed: 1.7 m/s
+Sats: 13</description>
+                <Point id="235">
+                    <coordinates>34.81329041871425,32.168784320304844,42.94660979323089</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="238">
+                <name>15:16:47</name>
+                <description>Alt: 42.1 m
+Speed: 0.7 m/s
+Sats: 13</description>
+                <Point id="237">
+                    <coordinates>34.813290467794694,32.1688282546151,42.11892139632255</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="240">
+                <name>15:16:48</name>
+                <description>Alt: 42.2 m
+Speed: 0.6 m/s
+Sats: 13</description>
+                <Point id="239">
+                    <coordinates>34.8132755998539,32.16882381495597,42.22803769260645</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="242">
+                <name>15:16:49</name>
+                <description>Alt: 44.5 m
+Speed: 5.1 m/s
+Sats: 13</description>
+                <Point id="241">
+                    <coordinates>34.813294157304426,32.16881370428957,44.46248527429998</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="244">
+                <name>15:16:50</name>
+                <description>Alt: 43.9 m
+Speed: 0.4 m/s
+Sats: 12</description>
+                <Point id="243">
+                    <coordinates>34.8132714009798,32.168847406680726,43.932054343633354</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+            <Placemark id="246">
+                <name>15:16:51</name>
+                <description>Alt: 43.8 m
+Speed: 0.7 m/s
+Sats: 13</description>
+                <Point id="245">
+                    <coordinates>34.81325092560508,32.168802855559804,43.81826604343951</coordinates>
+                    <altitudeMode>absolute</altitudeMode>
+                </Point>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>

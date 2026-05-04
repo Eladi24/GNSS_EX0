@@ -61,7 +61,7 @@ def solution_is_valid(pos_ecef: np.ndarray,
 
 if __name__ == "__main__":
     # 1. Parse observation data from RINEX file
-    epochs = rp.parse_rinex_file("rinex_logs/gnss_log_2026_03_22_08_44_21.26o")
+    epochs = rp.parse_rinex_file("rinex_logs/gnss_log_2026_03_21_17_17_57.26o")
     
     # 2. Download broadcast ephemeris (nav data) for the relevant date
     eph, file_paths = sp.get_ephemeris(epochs[0]['timestamp'])
@@ -202,9 +202,9 @@ if __name__ == "__main__":
     print(f"\nSolved {len(results)}/{len(epochs)} epochs")
     
     # 6. Export results to CSV and KML formats
-    out.write_csv(results, "output/path_2026_03_22_08_44_21.csv")
-    out.write_kml(results, "output/path_2026_03_22_08_44_21.kml")
+    out.write_csv(results, "output/path_2026_03_21_17_17_57.csv")
+    out.write_kml(results, "output/path_2026_03_21_17_17_57.kml")
 
     # 7. Compare computed path to NMEA ground truth reference
-    nmea_refs = nmea_parser.parse_gga("rinex_logs/gnss_log_2026_03_22_08_44_20.nmea")
+    nmea_refs = nmea_parser.parse_gga("rinex_logs/gnss_log_2026_03_21_17_17_57.nmea")
     nmea_parser.compare_to_nmea(results, nmea_refs)

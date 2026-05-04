@@ -10,11 +10,22 @@ from datetime import datetime, timezone
 
 
 def _ddmm_to_deg(ddmm: str, hemisphere: str) -> float:
-    """Convert NMEA DDMM.mmmmmm string + N/S/E/W to decimal degrees."""
+    """
+    Convert NMEA DDMM.mmmmmm string + N/S/E/W to decimal degrees.
+
+    Args:
+        ddmm (str): The latitude or longitude in DDMM.mmmmmm format.
+        hemisphere (str): A single character 'N', 'S', 'E', or 'W'.
+
+    Returns:
+        float: The coordinate in decimal degrees.
+    """
+    # Find the decimal point to separate degrees from minutes
     dot = ddmm.index('.')
     deg = float(ddmm[:dot - 2])
     minutes = float(ddmm[dot - 2:])
     decimal = deg + minutes / 60.0
+    # Apply negative sign for Southern and Western hemispheres
     if hemisphere in ('S', 'W'):
         decimal = -decimal
     return decimal
@@ -22,24 +33,20 @@ def _ddmm_to_deg(ddmm: str, hemisphere: str) -> float:
 
 def parse_gga(nmea_file: str) -> list[dict]:
     """
-    Parse every GGA sentence from the log file.
+    Parse every GGA sentence from the NMEA log file.
 
-    Returns list of dicts:
-      unix_ms        : int    — milliseconds since Unix epoch (UTC)
-      utc_time       : datetime
-      lat_deg        : float  — WGS-84 latitude
-      lon_deg        : float  — WGS-84 longitude
-      alt_ellipsoid_m: float  — WGS-84 ellipsoid height = alt_MSL + geoid
-      alt_msl_m      : float  — altitude above MSL
-      geoid_m        : float  — geoid separation
-      quality        : int    — fix quality (1=GPS, 4=RTK fixed, …)
-      num_sats       : int
-      hdop           : float
+    Args:
+        nmea_file (str): Path to the NMEA log file.
+
+    Returns:
+        list[dict]: List of parsed NMEA records containing timestamps, coordinates, 
+                    altitude, and quality metrics.
     """
     records = []
     with open(nmea_file, 'r') as f:
         for line in f:
             line = line.strip()
+            # Skip empty lines
             if not line:
                 continue
             parts = line.split(',')
@@ -47,9 +54,11 @@ def parse_gga(nmea_file: str) -> list[dict]:
             #         num_sats, hdop, alt, M, geoid, M, [dgps_age], *CS, unix_ms
             if len(parts) < 17:
                 continue
+            # Ensure it is a GGA sentence
             if not parts[1].endswith('GGA'):
                 continue
             try:
+                # Extract and cast relevant data fields
                 unix_ms  = int(parts[-1])
                 quality  = int(parts[7])
                 num_sats = int(parts[8])
@@ -80,10 +89,14 @@ def parse_gga(nmea_file: str) -> list[dict]:
 def compare_to_nmea(results: list[dict], nmea_refs: list[dict],
                     max_time_diff_s: float = 0.6) -> None:
     """
-    Match solver results to NMEA GGA by UTC timestamp (nearest within
-    max_time_diff_s) and print error statistics.
+    Match solver results to NMEA GGA reference data by UTC timestamp 
+    and print local tangent plane (ENU) error statistics.
 
-    Errors are in ENU metres computed from the NMEA reference position.
+    Args:
+        results (list[dict]): Computed solver results.
+        nmea_refs (list[dict]): Parsed NMEA ground truth records.
+        max_time_diff_s (float): Maximum allowed time difference (in seconds) 
+                                 to consider a match valid.
     """
     if not nmea_refs:
         print("\nNMEA comparison: no GGA records found")
@@ -100,12 +113,14 @@ def compare_to_nmea(results: list[dict], nmea_refs: list[dict],
 
     for res in results:
         ts = res['timestamp']
+        # Ensure timezone info exists before computing timestamp
         if ts.tzinfo is None:
             ts = ts.replace(tzinfo=timezone.utc)
         res_ms = int(ts.timestamp() * 1000)
 
         idx = int(np.argmin(np.abs(nmea_times - res_ms)))
         dt_s = abs(nmea_times[idx] - res_ms) / 1000.0
+        # Skip if the nearest NMEA record is too far in time
         if dt_s > max_time_diff_s:
             continue
 

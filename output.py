@@ -1,11 +1,19 @@
+"""
+GNSS Output Formatting Module.
+Provides functions to export computed navigation solutions to CSV and KML formats.
+"""
+
 import csv
 from datetime import timezone
 import simplekml
 
 def write_csv(results: list, path: str):
     """
-    Write one row per epoch to a CSV file.
-    Columns: UTC_time, lat, lon, alt, v_east, v_north, v_up, speed_ms, num_sats
+    Write the computed navigation results to a CSV file, one row per epoch.
+
+    Args:
+        results (list): List of dictionaries containing the computed epoch solutions.
+        path (str): File path for the output CSV.
     """
     fieldnames = [
         'UTC_time', 'lat', 'lon', 'alt_m',
@@ -14,8 +22,11 @@ def write_csv(results: list, path: str):
     with open(path, 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
+        
+        # Iterate through all valid epochs and format data for output
         for r in results:
             ts = r['timestamp']
+            # Ensure timestamp has UTC timezone info before formatting
             if ts.tzinfo is None:
                 ts = ts.replace(tzinfo=timezone.utc)
             writer.writerow({
@@ -33,7 +44,12 @@ def write_csv(results: list, path: str):
 
 def write_kml(results: list, path: str):
     """
-    Write a KML file with a LineString track and one placemark per epoch.
+    Write a Google Earth KML file with a continuous LineString track 
+    and individual placemarks for each epoch.
+
+    Args:
+        results (list): List of dictionaries containing the computed epoch solutions.
+        path (str): File path for the output KML file.
     """
     kml = simplekml.Kml()
     track = kml.newlinestring(name="GNSS Track")
@@ -44,9 +60,10 @@ def write_kml(results: list, path: str):
     track.style.linestyle.color = simplekml.Color.cyan
     track.style.linestyle.width = 3
 
-    # One placemark per epoch
+    # Create a folder to hold individual placemarks for each epoch
     folder = kml.newfolder(name="Epochs")
     for r in results:
+        # Format timestamp and speed for the placemark description
         ts = r['timestamp'].strftime('%H:%M:%S')
         spd = f"{r['speed_ms']:.1f} m/s" if r['speed_ms'] is not None else "—"
         pnt = folder.newpoint(

@@ -1,3 +1,8 @@
+"""
+Positioning and Navigation Solver Module.
+Provides least-squares algorithms to compute position, velocity, and time from GNSS observables.
+"""
+
 import numpy as np
 
 SPEED_OF_LIGHT      = 299_792_458.0
@@ -8,6 +13,12 @@ def _guess_initial_position(sat_xyz: np.ndarray) -> np.ndarray:
     General initial receiver position estimate — works anywhere on Earth.
     Project the centroid of the visible satellite constellation down to
     Earth's surface. No geographic assumptions.
+
+    Args:
+        sat_xyz (np.ndarray): Nx3 array of satellite ECEF coordinates.
+
+    Returns:
+        np.ndarray: Initial guess for receiver ECEF position [x, y, z].
     """
     centroid = np.mean(sat_xyz, axis=0)
     r = np.linalg.norm(centroid)
@@ -20,7 +31,21 @@ def least_squares_position(sat_positions: list,
                             initial_pos: np.ndarray = None,
                             height_constraint_m: float = None,
                             ) -> tuple[np.ndarray, float, np.ndarray, list]:
-    """Returns (pos_ecef, dt_seconds, post_fit_residuals, outlier_ids) or (None, None, None, [])."""
+    """
+    Robust Least-Squares Positioning with Outlier Rejection.
+
+    Args:
+        sat_positions (list): List of dictionaries containing satellite ephemeris and observables.
+        initial_pos (np.ndarray, optional): Prior ECEF position [x, y, z] to linearize about.
+        height_constraint_m (float, optional): Optional altitude in metres for soft constraint.
+
+    Returns:
+        tuple: (pos_ecef, dt_seconds, post_fit_residuals, outlier_ids)
+            - pos_ecef: np.ndarray [x, y, z] in metres, or None if failed.
+            - dt_seconds: Receiver clock bias in seconds, or None if failed.
+            - post_fit_residuals: np.ndarray of residuals, or None if failed.
+            - outlier_ids: list of rejected satellite PRNs.
+    """
     supported = [s for s in sat_positions
                  if s['id'][0] in CONSTELLATION_ORDER
                  and s.get('b_sv_m_valid', True)]
@@ -68,7 +93,17 @@ def least_squares_position(sat_positions: list,
 def _solve_once(supported: list,
                 initial_pos: np.ndarray = None,
                 height_constraint_m: float = None) -> tuple:
-    """Returns (pos_ecef, dt_s, residuals, used_sats) or (None, None, None, [])."""
+    """
+    Core iterative least-squares solver for a single epoch.
+
+    Args:
+        supported (list): Filtered list of satellites.
+        initial_pos (np.ndarray, optional): Apriori position estimate.
+        height_constraint_m (float, optional): Virtual observation of altitude.
+
+    Returns:
+        tuple: (pos_ecef, dt_m, residuals, used_sats) or (None, None, None, []).
+    """
 
     # ISB groups: one bias parameter per (constellation, pr_obs_type) pair that
     # has >= 2 satellites. The first available group acts as the reference clock
@@ -135,6 +170,7 @@ def _solve_once(supported: list,
         ])
         residuals  = pseudoranges - (ranges + clock_bias)
         unit_vecs  = -diff / ranges[:, np.newaxis]
+        # Design matrix H: [Unit vectors | Ref Clock | ISB1 | ISB2 ... ]
         H          = np.zeros((len(supported), n_unknowns))
         H[:, :3]   = unit_vecs
         H[:, 3]    = 1.0
@@ -162,6 +198,7 @@ def _solve_once(supported: list,
                 residuals = np.append(residuals, h_resid)
                 W         = np.diag(np.append(np.diag(W), 1.0))
 
+        # Solve Normal Equations: (H^T W H) delta = H^T W residuals
         delta  = np.linalg.lstsq(W @ H, W @ residuals, rcond=None)[0]
         state += delta
         if np.linalg.norm(delta[:3]) < 1e-4:
@@ -248,7 +285,15 @@ def least_squares_velocity(sat_positions: list, pos_ecef: np.ndarray) -> tuple[n
 def ecef_to_geodetic(x, y, z) -> tuple[float, float, float]:
     """
     Convert ECEF (metres) to geodetic (lat, lon, alt).
-    Uses Bowring's iterative method with WGS-84 ellipsoid.
+    Uses Bowring's iterative method with WGS-84 ellipsoid parameters.
+
+    Args:
+        x (float): ECEF X coordinate in metres.
+        y (float): ECEF Y coordinate in metres.
+        z (float): ECEF Z coordinate in metres.
+
+    Returns:
+        tuple: (latitude_deg, longitude_deg, altitude_m).
     """
     a  = 6_378_137.0
     e2 = 6.6943799901e-3
@@ -269,7 +314,16 @@ def ecef_to_geodetic(x, y, z) -> tuple[float, float, float]:
 
 def ecef_to_azel(rx_xyz: np.ndarray,
                  sv_xyz: np.ndarray) -> tuple[float, float]:
-    """Compute elevation and azimuth (degrees) from receiver to satellite."""
+    """
+    Compute elevation and azimuth (degrees) from receiver to satellite.
+
+    Args:
+        rx_xyz (np.ndarray): Receiver ECEF coordinates [x, y, z] in metres.
+        sv_xyz (np.ndarray): Satellite ECEF coordinates [x, y, z] in metres.
+
+    Returns:
+        tuple: (elevation_deg, azimuth_deg).
+    """
     lat, lon, _ = ecef_to_geodetic(*rx_xyz)
     lat_r, lon_r = np.radians(lat), np.radians(lon)
     sin_lat, cos_lat = np.sin(lat_r), np.cos(lat_r)
@@ -286,7 +340,13 @@ def ecef_to_azel(rx_xyz: np.ndarray,
 
 
 def validate_with_gsv(position_ecef: np.ndarray, sat_positions: list):
-    """Compare computed satellite geometry against NMEA GSV ground truth."""
+    """
+    Compare computed satellite geometry against NMEA GSV ground truth.
+
+    Args:
+        position_ecef (np.ndarray): Receiver ECEF position [x, y, z].
+        sat_positions (list): List of satellite dictionaries.
+    """
     nmea_gsv = {
         'G08': {'el': 51, 'az': 302},
         'G10': {'el': 57, 'az': 23},
@@ -313,7 +373,17 @@ def validate_with_gsv(position_ecef: np.ndarray, sat_positions: list):
         
 
 def ecef_vel_to_enu(vel_ecef: np.ndarray, lat_deg: float, lon_deg: float) -> tuple[float, float, float]:
-    """Convert ECEF velocity vector to local East/North/Up components."""
+    """
+    Convert ECEF velocity vector to local East/North/Up (ENU) components.
+
+    Args:
+        vel_ecef (np.ndarray): Velocity vector in ECEF frame [vx, vy, vz].
+        lat_deg (float): Receiver latitude in degrees.
+        lon_deg (float): Receiver longitude in degrees.
+
+    Returns:
+        tuple: (velocity_east, velocity_north, velocity_up) in m/s.
+    """
 
     lat = np.radians(lat_deg)
     lon = np.radians(lon_deg)

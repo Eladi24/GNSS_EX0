@@ -1,20 +1,32 @@
 from datetime import datetime
 
-def parse_rinex_file(file_path) -> list:
-    
+def parse_rinex_file(file_path: str) -> list:
+    """
+    Parses a RINEX observation file and extracts epoch data.
+
+    Args:
+        file_path (str): The path to the RINEX observation file.
+
+    Returns:
+        list: A list of dictionaries, where each dictionary represents an epoch
+              and contains the timestamp, number of satellites, and satellite data.
+    """
     epochs = []
     obs_types = {}
     header_lines = []
     current_epoch = None
     in_header = True
+
     with open(file_path, 'r') as rinex_file:
         for line in rinex_file:
             if in_header:
                 header_lines.append(line)
                 if "END OF HEADER" in line:
+                    # Extract observation types from the stored header lines
                     obs_types = parse_obs_types(header_lines)
                     in_header = False
             else:
+                # A new epoch starts with a ">" character in RINEX 3
                 if line.startswith(">"):
                     if current_epoch is not None:
                         epochs.append(current_epoch)
@@ -31,15 +43,29 @@ def parse_rinex_file(file_path) -> list:
                 else:
                     if current_epoch is None:
                         continue
+                    
+                    # Parse satellite observation data
                     sat = parse_sat_line(line, obs_types)
                     if sat is not None:
                         current_epoch["satellites"].append(sat)
+        
+        # Append the last epoch after finishing the file
         if current_epoch is not None:
             epochs.append(current_epoch)
+            
     return epochs
 
-def parse_sat_line(line, obs_types) -> dict:
+def parse_sat_line(line: str, obs_types: dict) -> dict:
+    """
+    Parses a single satellite observation line from a RINEX file.
 
+    Args:
+        line (str): The line containing satellite observation data.
+        obs_types (dict): A dictionary mapping constellation letters to lists of observation types.
+
+    Returns:
+        dict: A dictionary containing the parsed satellite data, or None if no relevant data is found.
+    """
     sattelite_id = line[0:3].strip()
     constellation_letter = sattelite_id[0]
     obs_list = obs_types.get(constellation_letter, [])
@@ -77,8 +103,16 @@ def parse_sat_line(line, obs_types) -> dict:
     return sattelite_data
 
 
-def parse_epoch_header(line) -> tuple[datetime, int, int]:
+def parse_epoch_header(line: str) -> tuple[datetime, int, int]:
+    """
+    Parses an epoch header line from a RINEX file.
 
+    Args:
+        line (str): The line containing the epoch header.
+
+    Returns:
+        tuple[datetime, int, int]: A tuple containing the timestamp, epoch flag, and number of satellites.
+    """
     parts = line.split()
     year = int(parts[1])
     month = int(parts[2])
@@ -93,8 +127,16 @@ def parse_epoch_header(line) -> tuple[datetime, int, int]:
     num_sats = int(parts[8])
     return time_stamp, epoch_flag, num_sats
 
-def parse_obs_types(header_lines) -> dict:
-    
+def parse_obs_types(header_lines: list) -> dict:
+    """
+    Parses observation types from the RINEX file header.
+
+    Args:
+        header_lines (list): A list of strings representing the lines in the RINEX header.
+
+    Returns:
+        dict: A dictionary mapping constellation letters to lists of observation types.
+    """
     obs_types = {}
     for line in header_lines:
         if "SYS / # / OBS TYPES" in line:

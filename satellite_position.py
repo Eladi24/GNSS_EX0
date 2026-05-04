@@ -40,19 +40,43 @@ DOPPLER_PRIORITY = {
 }
 
 def dt_to_gps_millis(dt: datetime) -> float:
-    """Convert GPS time datetime directly to GPS millis without leap second shifts."""
+    """
+    Convert a datetime object representing GPS time directly to GPS milliseconds.
+    Does not account for leap second shifts (assumes input is strictly GPS time).
+
+    Args:
+        dt (datetime): The datetime to convert.
+
+    Returns:
+        float: The equivalent time in milliseconds since the GPS epoch (Jan 6, 1980).
+    """
+    # Strip timezone information if present
     if dt.tzinfo is not None:
         dt = dt.replace(tzinfo=None)
+    # GPS epoch started on January 6, 1980
     gps_epoch = datetime(1980, 1, 6)
+    # Calculate total milliseconds elapsed since the epoch
     return (dt - gps_epoch).total_seconds() * 1000.0
 
 def crop_ephemeris(epochs: list, gps_millis: float):
+    """
+    Crop the downloaded ephemeris data to only include relevant satellites 
+    for the provided epochs and a specific time.
 
+    Args:
+        epochs (list): A list of parsed epoch dictionaries.
+        gps_millis (float): The time in GPS milliseconds to crop around.
+
+    Returns:
+        NavData | None: The cropped ephemeris NavData object, or None if cropping fails.
+    """
+    # Collect unique satellite IDs from all epochs
     all_sat_ids = set()
     for epoch in epochs:
         for sat in epoch['satellites']:
             all_sat_ids.add(sat['id'])
     try:
+        # Use gnss_lib_py's get_time_cropped_rinex to filter ephemeris
         ephem = get_time_cropped_rinex(
             gps_millis          = gps_millis,
             satellites          = list(all_sat_ids),
@@ -67,21 +91,39 @@ def crop_ephemeris(epochs: list, gps_millis: float):
 def select_doppler(sat: dict) -> tuple[float, float] | tuple[None, None]:
     """
     Return (doppler_hz, wavelength_m) for the best available Doppler observable.
-    Returns (None, None) if no Doppler available.
+    
+    Args:
+        sat (dict): The parsed satellite data dictionary for a specific epoch.
+
+    Returns:
+        tuple[float, float] | tuple[None, None]: A tuple containing the Doppler value 
+                                                 and wavelength, or (None, None) if unavailable.
     """
+    # Retrieve Doppler priority list based on the constellation
     priorities = DOPPLER_PRIORITY.get(sat['sys'], [("D1C", GPS_L1_LAMBDA)])
     for field, wavelength in priorities:
         val = sat.get(field)
         if val is not None:
+            # Return the first available Doppler value and its corresponding wavelength
             return val, wavelength
     return None, None
 
 def select_pseudorange(sat: dict) -> float | None:
-    """Return the best available pseudorange for this satellite."""
+    """
+    Return the best available pseudorange for this satellite.
+
+    Args:
+        sat (dict): The parsed satellite data dictionary.
+
+    Returns:
+        float | None: The best available pseudorange value, or None if none are found.
+    """
+    # Retrieve pseudorange priority list based on the constellation
     priorities = PR_PRIORITY.get(sat['sys'], ["C1C", "C5Q", "C2I"])
     for code in priorities:
         val = sat.get(code)
         if val is not None:
+            # Return the first available pseudorange value
             return val
     return None
 
@@ -100,10 +142,14 @@ def get_ephemeris(timestamp) -> tuple[NavData, list]:
     -------
     nav : RinexNav
         Parsed navigation data for all constellations on that date
+    file_paths : list
+        List of paths to the downloaded navigation files.
     """
+    # Ensure the timestamp has UTC timezone information
     if timestamp.tzinfo is None:
         timestamp = timestamp.replace(tzinfo=timezone.utc)
 
+    # Convert to GPS milliseconds for the downloader
     gps_millis = dt_to_gps_millis(timestamp)
     file_paths = load_ephemeris(
         file_type      = "rinex_nav",
@@ -112,6 +158,8 @@ def get_ephemeris(timestamp) -> tuple[NavData, list]:
         verbose        = True,
     )
     print(f"Downloaded nav files: {file_paths}")
+    
+    # Parse and return the downloaded RINEX nav files
     return RinexNav(file_paths), file_paths
 
 def _eval_clock_poly(nav_data, col: int, gps_millis_tx: float) -> float | None:
@@ -122,18 +170,34 @@ def _eval_clock_poly(nav_data, col: int, gps_millis_tx: float) -> float | None:
       SVclockBias (s), SVclockDrift (s/s), SVclockDriftRate (s/s²)
       gps_millis  — absolute GPS epoch of t_oc in milliseconds (same time
                     base as gps_millis_tx, so dt is just their difference).
-    Returns b_sv_m in metres (add to pseudorange), or None.
+                    
+    Args:
+        nav_data (NavData): The navigation data object.
+        col (int): The column index for the specific satellite in nav_data.
+        gps_millis_tx (float): Transmission time in GPS milliseconds.
+                    
+    Returns:
+        float | None: b_sv_m in metres (add to pseudorange), or None if invalid.
     """
     try:
+        # Extract polynomial coefficients (bias, drift, drift rate)
         bias   = float(nav_data['SVclockBias',      col])
         drift  = float(nav_data['SVclockDrift',     col])
         drift2 = float(nav_data['SVclockDriftRate', col])
         t_ref  = float(nav_data['gps_millis',       col])  # ms at t_oc epoch
+        
+        # Check for missing data
         if any(np.isnan([bias, drift, drift2, t_ref])):
             return None
+            
+        # Calculate time difference in seconds from reference epoch
         dt = (gps_millis_tx - t_ref) / 1000.0   # ms → seconds
+        
+        # Handle GPS week rollovers (604800 seconds in a week)
         if dt >  302400: dt -= 604800
         if dt < -302400: dt += 604800
+        
+        # Evaluate polynomial and convert time correction to distance (metres)
         return (bias + drift * dt + drift2 * dt**2) * SPEED_OF_LIGHT
     except Exception:
         return None
@@ -154,7 +218,16 @@ def compute_clock_correction(sv_states, ephem,
       2. Search ephem by gnss_id + sv_id — robust to column-order differences
          between sv_states and the cropped ephemeris.
 
-    Returns correction in metres (add to pseudorange), or None.
+    Args:
+        sv_states (NavData): Computed satellite states.
+        ephem (NavData): The raw ephemeris data.
+        sv_states_idx (int): The expected column index in sv_states.
+        gnss_id_str (str): The GNSS constellation identifier (e.g., 'G', 'E').
+        sv_id_int (int): The satellite PRN number.
+        gps_millis_tx (float): Signal transmission time in GPS milliseconds.
+
+    Returns:
+        float | None: Clock correction in metres (add to pseudorange), or None.
     """
     # Fast path: sv_states preserves original nav fields at the same index
     b = _eval_clock_poly(sv_states, sv_states_idx, gps_millis_tx)
@@ -200,6 +273,7 @@ def compute_sat_position(epoch, ephem, rx_pos=None) -> list:
         Note: b_sv_m follows gnss_lib_py convention (add to pseudorange).
               corrected_pr = pseudorange + b_sv_m is pre-computed for solver use.
     """
+    # Ensure timestamps are localized to compute milliseconds properly
     timestamp = epoch['timestamp']
     if timestamp.tzinfo is None:
         timestamp = timestamp.replace(tzinfo=timezone.utc)
@@ -212,9 +286,12 @@ def compute_sat_position(epoch, ephem, rx_pos=None) -> list:
         pr = select_pseudorange(sat)
         if pr is not None:
             valid_sats[sat['id']] = pr
+            
+    # If no valid pseudoranges in this epoch, stop evaluating
     if not valid_sats:
         return []
     
+    # Collect Doppler observables for velocity/drift estimation
     doppler_obs = {}
     for sat in epoch['satellites']:
         d, lam = select_doppler(sat)
@@ -233,6 +310,7 @@ def compute_sat_position(epoch, ephem, rx_pos=None) -> list:
         print(f"  Warning: find_sv_states failed: {e}")
         return []
 
+    # Convert initial ECEF reference position to Geodetic for atmospheric models
     if rx_pos is not None:
         rx_lat, rx_lon, rx_alt = ecef_to_geodetic(*rx_pos)
     else:
@@ -272,7 +350,8 @@ def compute_sat_position(epoch, ephem, rx_pos=None) -> list:
             continue
 
         # Correct satellite position for individual transmission time difference
-        # find_sv_states was evaluated at the average transmission time.
+        # find_sv_states was evaluated at the average transmission time, 
+        # so we must adjust using this satellite's specific pseudorange.
         dt_s = (avg_pseudorange - pr) / SPEED_OF_LIGHT
         x += vx * dt_s
         y += vy * dt_s
@@ -368,13 +447,19 @@ def filter_by_elevation(sat_positions: list, rx_ecef: np.ndarray,
     Returns
     -------
     filtered : list of dicts
+        List containing only satellites above the specified elevation mask.
     """
     from solver import ecef_to_azel  # avoid circular import at module level
 
     filtered = []
     for s in sat_positions:
+        # Extract satellite coordinates
         sv_xyz = np.array([s['x_sv_m'], s['y_sv_m'], s['z_sv_m']])
+        
+        # Calculate elevation and azimuth
         el, _  = ecef_to_azel(rx_ecef, sv_xyz)
+        
+        # Keep satellite if elevation is at or above the mask
         if el >= min_elevation_deg:
             filtered.append(s)
         else:

@@ -1,3 +1,8 @@
+"""
+GNSS Atmospheric Corrections Module.
+Provides functions to calculate Klobuchar ionospheric delays and Saastamoinen tropospheric delays.
+"""
+
 import numpy as np
 
 SPEED_OF_LIGHT = 299_792_458.0
@@ -7,6 +12,13 @@ KLOBUCHAR_ALPHA = None
 KLOBUCHAR_BETA  = None
 
 def load_klobuchar_from_nav(nav_file_path: str):
+    """
+    Parses a RINEX navigation file to extract Klobuchar ionospheric model coefficients.
+    Updates the global KLOBUCHAR_ALPHA and KLOBUCHAR_BETA arrays.
+
+    Args:
+        nav_file_path (str): The path to the RINEX navigation file to parse.
+    """
     global KLOBUCHAR_ALPHA, KLOBUCHAR_BETA
     alpha, beta = [], []
     try:
@@ -18,7 +30,8 @@ def load_klobuchar_from_nav(nav_file_path: str):
                     for j in range(4):
                         raw = line[5 + j*12 : 17 + j*12].strip()
                         if raw:
-                            vals.append(float(raw.replace('D','e').replace('d','e')))
+                            # RINEX uses 'D' or 'd' for scientific notation exponent
+                            vals.append(float(raw.replace('D', 'e').replace('d', 'e')))
                     if label == 'GPSA' and len(vals) == 4:
                         alpha = vals
                     elif label == 'GPSB' and len(vals) == 4:
@@ -41,24 +54,43 @@ def klobuchar_iono(gps_millis: float, sat_el_rad: float, sat_az_rad: float,
                    alpha: list, beta: list) -> float:
     """
     Klobuchar single-frequency ionospheric correction.
-    Returns correction in metres to ADD to corrected_pr.
-    alpha, beta: 4-element lists from RINEX nav header ION ALPHA / ION BETA.
+    
+    Args:
+        gps_millis (float): Receiver time of week in milliseconds.
+        sat_el_rad (float): Satellite elevation angle in radians.
+        sat_az_rad (float): Satellite azimuth angle in radians.
+        rx_lat_rad (float): Receiver approximate geodetic latitude in radians.
+        rx_lon_rad (float): Receiver approximate geodetic longitude in radians.
+        alpha (list): 4-element list from RINEX nav header ION ALPHA.
+        beta (list): 4-element list from RINEX nav header ION BETA.
+        
+    Returns:
+        float: Correction in metres to ADD to corrected pseudorange (always negative).
     """
+    # Calculate Earth-centered angle (psi)
     psi = 0.0137 / (sat_el_rad / np.pi + 0.11) - 0.022
+    
+    # Calculate sub-ionospheric latitude (lat_i) and longitude (lon_i)
     lat_i = rx_lat_rad / np.pi + psi * np.cos(sat_az_rad)
     lat_i = np.clip(lat_i, -0.416, 0.416)
     lon_i = rx_lon_rad / np.pi + psi * np.sin(sat_az_rad) / np.cos(lat_i * np.pi)
+    
+    # Geomagnetic latitude
     lat_m = lat_i + 0.064 * np.cos((sat_az_rad - 1.617) * np.pi)
 
+    # Local time at the sub-ionospheric point
     t = 4.32e4 * lon_i +(gps_millis / 1000) % 86400
     t = t % 86400
 
+    # Period of the ionospheric delay
     per = sum(beta[n] * (lat_m ** n) for n in range(4))
     per = max(per, 72000.0)
 
+    # Amplitude of the ionospheric delay
     amp = sum(alpha[n] * (lat_m ** n) for n in range(4))
     amp = max(amp, 0.0)
 
+    # Phase of the delay
     x = 2 * np.pi * (t - 50400) / per
     if abs(x) < 1.57:
         iono_s = 5e-9 + amp * (1 - x**2 / 2 + x**4 / 24)
@@ -72,15 +104,22 @@ def klobuchar_iono(gps_millis: float, sat_el_rad: float, sat_az_rad: float,
 def saastamoinen_tropo(sat_el_rad: float, alt_m: float = 0.0) -> float:
     """
     Simplified Saastamoinen tropospheric correction.
-    Returns correction in metres to ADD to corrected_pr (always negative).
-    alt_m: receiver altitude in metres (use 0 if unknown).
+    
+    Args:
+        sat_el_rad (float): Satellite elevation angle in radians.
+        alt_m (float): Receiver altitude in metres (use 0 if unknown).
+        
+    Returns:
+        float: Tropospheric delay correction in metres to ADD to corrected_pr (always negative).
     """
 
+    # Standard atmosphere models for pressure (P), temperature (T), and humidity (e) based on altitude
     P = 1013.25 * (1 - 2.2557e-5 * alt_m) ** 5.2568 # pressure hPa
     T = 15.0- 6.5e-3 * alt_m + 273.15 # temperature K
     e = 0.5 * np.exp(17.27 * (T - 273.15) / (T - 36.85)) # humidity hPa
 
     z = np.pi / 2 - sat_el_rad # zenith angle
+    
     # 1.156 is the standard Saastamoinen correction term B for h=0. 28.0 is an error.
     delay = (0.002277 / np.cos(z)) * (P + (1255 / T + 0.05) * e - 1.156 * np.tan(z)**2)
     return -delay # negative = shorten pseudorange

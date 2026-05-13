@@ -74,8 +74,8 @@ graph TD
     C --> D[Error Modeling: Ionosphere, Troposphere & Clock Biases]
     D --> E[Solver: Iterative Weighted Least Squares]
     E --> F[Coordinate Transformation: ECEF to LLA]
-    F --> G[Validation: Comparison with NMEA Ground Truth]
-    G --> H[Final Solution: KML & CSV Export]
+    F --> G[Final Solution: KML & CSV Export]
+    G --> H[Validation: Comparison with NMEA Ground Truth]
 ```
 
 ---
@@ -100,10 +100,10 @@ This project was built with reference to the following high-quality GNSS resourc
 
 ### Installation & Execution
 ```bash
-git clone https://github.com/your-user/gnss-assignment.git
+git clone https://github.com/Eladi24/GNSS_EX0.git
 cd gnss-assignment
 pip install -r requirements.txt
-python main.py
+python3 main.py
 ```
 *(Note: File paths are currently configured inside `main.py`.)*
 
